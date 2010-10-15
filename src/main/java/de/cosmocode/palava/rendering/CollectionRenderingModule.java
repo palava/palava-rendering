@@ -38,7 +38,8 @@ public final class CollectionRenderingModule implements Module {
 
     @Override
     public void configure(Binder binder) {
-        binder.bind(Renderer.class).to(CollectionRenderer.class);
+        binder.bind(Renderer.class).annotatedWith(Backing.class).to(CollectionRenderer.class);
+        binder.bind(Renderer.class).to(InjectableRenderer.class);
     }
     
     /**
